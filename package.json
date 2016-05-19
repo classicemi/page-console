@@ -1,0 +1,15 @@
+{
+  "name": "page-console",
+  "version": "0.1.0",
+  "description": "redirecting console message to web pages",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node build.js"
+  },
+  "author": "classicemi",
+  "license": "ISC",
+  "devDependencies": {
+    "rollup": "^0.26.3"
+  }
+}
