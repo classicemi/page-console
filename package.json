@@ -5,11 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "node build.js"
+    "build": "node build.js",
+    "watch": "./node_modules/.bin/watch \"npm run build\" src/ test/"
   },
   "author": "classicemi",
   "license": "ISC",
   "devDependencies": {
-    "rollup": "^0.26.3"
+    "rollup": "^0.26.3",
+    "watch": "^0.18.0"
   }
 }

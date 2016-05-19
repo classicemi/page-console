@@ -1,7 +1,36 @@
-import { domGenerator } from './dom';
+import render from './render';
+
+let bodyElement = document.getElementsByTagName('body')[0];
+let style = `
+.__page-console-wrapper {
+  position: absolute;
+  top: 5px;
+  bottom: 5px;
+  right: 5px;
+  width: 280px;
+  padding: 10px;
+}
+
+.__page-console-wrapper-normal {
+  background: rgba(169, 222, 111, 1);
+}
+
+.__page-console-wrapper p {
+  margin: 0;
+}
+`;
+
+function insertStyle(style) {
+  var styleNode = document.createElement('style');
+  var styleTextNode = document.createTextNode(style);
+  styleNode.rel = 'stylesheet/css';
+  styleNode.appendChild(styleTextNode);
+  bodyElement.appendChild(styleNode);
+}
+
+insertStyle(style);
 
 export default function(rawCsl) {
-  let bodyElement = document.getElementsByTagName('body')[0];
   let msgDom;
 
   for (let k in rawCsl) {
@@ -13,7 +42,7 @@ export default function(rawCsl) {
   function redirect(k) {
     var _copy = console[k];
     console[k] = function(msg) {
-      msgDom = domGenerator(k, msg);
+      var msgDom = render(k === 'error' ? 'error' : 'normal', msg);
       bodyElement.appendChild(msgDom);
       _copy.apply(this, Array.prototype.slice.call(arguments));
     };
