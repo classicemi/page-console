@@ -1,25 +1,7 @@
-import render from './render';
+import style from './style';
+import Wrapper from './Wrapper';
 
 let bodyElement = document.getElementsByTagName('body')[0];
-let style = `
-.__page-console-wrapper {
-  position: absolute;
-  top: 5px;
-  bottom: 5px;
-  right: 5px;
-  width: 280px;
-  padding: 10px;
-}
-
-.__page-console-wrapper-normal {
-  background: rgba(169, 222, 111, 1);
-}
-
-.__page-console-wrapper p {
-  margin: 0;
-}
-`;
-
 function insertStyle(style) {
   var styleNode = document.createElement('style');
   var styleTextNode = document.createTextNode(style);
@@ -27,11 +9,13 @@ function insertStyle(style) {
   styleNode.appendChild(styleTextNode);
   bodyElement.appendChild(styleNode);
 }
-
 insertStyle(style);
 
 export default function(rawCsl) {
   let msgDom;
+  let wrapper = new Wrapper();
+  bodyElement.appendChild(wrapper.node);
+  console.log(wrapper);
 
   for (let k in rawCsl) {
     if (typeof rawCsl[k] === 'function') {
@@ -40,10 +24,12 @@ export default function(rawCsl) {
   }
 
   function redirect(k) {
-    var _copy = console[k];
-    console[k] = function(msg) {
-      var msgDom = render(k === 'error' ? 'error' : 'normal', msg);
-      bodyElement.appendChild(msgDom);
+    var _copy = rawCsl[k];
+    rawCsl[k] = function(msg) {
+      if (!wrapper.isShow) {
+        wrapper.show();
+      }
+      wrapper.appendItem(msg);
       _copy.apply(this, Array.prototype.slice.call(arguments));
     };
   }
