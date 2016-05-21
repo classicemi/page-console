@@ -1,6 +1,7 @@
 import style from './style';
 import Wrapper from './Wrapper';
 
+let pconsole = {};
 let bodyElement = document.getElementsByTagName('body')[0];
 function insertStyle(style) {
   var styleNode = document.createElement('style');
@@ -15,7 +16,6 @@ export default function(rawCsl) {
   let msgDom;
   let wrapper = new Wrapper();
   bodyElement.appendChild(wrapper.node);
-  console.log(wrapper);
 
   for (let k in rawCsl) {
     if (typeof rawCsl[k] === 'function') {
@@ -26,10 +26,14 @@ export default function(rawCsl) {
   function redirect(k) {
     var _copy = rawCsl[k];
     rawCsl[k] = function(msg) {
-      if (!wrapper.isShow) {
-        wrapper.show();
+      try {
+        if (!wrapper.isShow) {
+          wrapper.show();
+        }
+        wrapper.appendItem(msg);
+      } catch(err) {
+        alert(err);
       }
-      wrapper.appendItem(msg);
       _copy.apply(this, Array.prototype.slice.call(arguments));
     };
   }
