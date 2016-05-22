@@ -131,6 +131,10 @@
     let wrapper = new Wrapper();
     bodyElement.appendChild(wrapper.node);
 
+    if (!rawCsl) {
+      // mount all methods on `pconsole` object
+    }
+
     for (let k in rawCsl) {
       if (typeof rawCsl[k] === 'function') {
         redirect(k);
