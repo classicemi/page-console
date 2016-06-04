@@ -1,4 +1,40 @@
+import HASH from './hash';
+
 let style = `
+#_page-console-${HASH}-switch {
+  display: block;
+  padding: 0.6em 1em;
+  line-height: 1;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  font-size: 1em;
+  color: #fff;
+  background-color: #4993e5;
+  border: 1px solid #4993e5;
+  border-radius: 4px;
+  white-space: nowrap;
+  vertical-align: middle;
+  box-sizing: border-box;
+  outline: none;
+}
+
+#_page-console-${HASH}-switch:active {
+  background-color: #2d81e1;
+  border-color: #297ee0;
+}
+
+#_page-console-${HASH}-mask {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, .5);
+  z-index: 10000;
+}
+
 .__page-console-wrapper {
   position: absolute;
   top: 5px;

@@ -4,14 +4,16 @@
   "description": "redirecting console message to web pages",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "node build.js",
-    "watch": "./node_modules/.bin/watch \"npm run build\" src/ test/"
+    "dev": "webpack --watch",
+    "test": "node server.js"
   },
   "author": "classicemi",
   "license": "ISC",
   "devDependencies": {
-    "rollup": "^0.26.3",
-    "watch": "^0.18.0"
+    "babel-core": "^6.9.1",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.9.0",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "webpack": "^1.13.1"
   }
 }
