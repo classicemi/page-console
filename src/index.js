@@ -73,9 +73,11 @@ class PageConsole {
     this.tab = $(`#${this.console.id}-tab ul`);
     let tabItems = document.createDocumentFragment();
     this.tabs.forEach(tab => {
-      // let li = document.createElement
-      // tabItems.appendChild()
+      let li = document.createElement('li');
+      li.innerText = tab;
+      tabItems.appendChild(li);
     });
+    this.tab.appendChild(tabItems);
 
     console.log(this);
   }
@@ -86,10 +88,10 @@ class PageConsole {
     }
     switch (status) {
       case 'open':
-        this.mask.style.display = 'block';
+        this.console.classList.add(`_page-console-${HASH}-active`);
         break;
       case 'close':
-        this.mask.style.display = 'none';
+        this.console.classList.remove(`_page-console-${HASH}-active`);
         break;
     }
   }
