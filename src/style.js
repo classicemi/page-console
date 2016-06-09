@@ -75,9 +75,14 @@ let style = `
 #_page-console-${HASH}-tab li {
   display: inline-block;
   padding: 0 .7rem;
-  font-size: 1rem;
+  font-size: .9rem;
   line-height: 2rem;
   color: ${WHITE};
+  letter-spacing: 1px;
+}
+
+#_page-console-${HASH}-tab li.active {
+  background-color: #4C5E6D;
 }
 
 .__page-console-wrapper {
