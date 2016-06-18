@@ -78,6 +78,13 @@ class PageConsole {
       tabItems.appendChild(li);
     });
     this.tab.appendChild(tabItems);
+    this.tab.addEventListener('click', (e) => {
+      this.tab.childNodes.forEach(child => {
+        child.classList.remove('active');
+      });
+      e.target.classList.add('active');
+    });
+    this.tab.firstChild.classList.add('active');
 
     console.log(this);
   }

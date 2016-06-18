@@ -78,7 +78,6 @@ let style = `
   font-size: .9rem;
   line-height: 2rem;
   color: ${WHITE};
-  letter-spacing: 1px;
 }
 
 #_page-console-${HASH}-tab li.active {
