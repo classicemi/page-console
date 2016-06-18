@@ -57,13 +57,13 @@ class PageConsole {
     // switch button
     this.button = $(`#${this.console.id}-switch`);
     this.button.addEventListener('click', () => {
-      this.switch('open');
+      this.switchStatus('open');
     }, false);
 
     // mask
     this.mask = $(`#${this.console.id}-mask`);
     this.mask.addEventListener('click', () => {
-      this.switch('close');
+      this.switchStatus('close');
     }, false);
 
     // console panel
@@ -89,7 +89,7 @@ class PageConsole {
     console.log(this);
   }
 
-  switch (status) {
+  switchStatus (status) {
     if (!status) {
       return console.error('Please specify a status to switch to.');
     }
