@@ -70,11 +70,12 @@ class PageConsole {
     this.panel = $(`#${this.console.id}-panel`);
 
     // tab
-    this.tab = $(`#${this.console.id}-tab ul`);
+    this.tab = $(`#${this.console.id}-tabs ul`);
     let tabItems = document.createDocumentFragment();
     this.tabs.forEach(tab => {
       let li = document.createElement('li');
       li.innerText = tab;
+      li.dataset.tabType = tab;
       tabItems.appendChild(li);
     });
     this.tab.appendChild(tabItems);
@@ -83,13 +84,22 @@ class PageConsole {
         child.classList.remove('active');
       });
       e.target.classList.add('active');
+      this.switchTab(e.target.tabType);
     });
     this.tab.firstChild.classList.add('active');
+
+    // tab panels
+    this.tabPanels = $(`#${this.console.id}-tab-panels`);
+    this.tabs.forEach(tab => {
+      let tabPanel = document.createElement('div');
+      tabPanel.id = `_page-console-${HASH}-${tab.toLowerCase()}-panel`;
+      this.tabPanels.appendChild(tabPanel);
+    });
 
     console.log(this);
   }
 
-  switchStatus (status) {
+  switchStatus(status) {
     if (!status) {
       return console.error('Please specify a status to switch to.');
     }
@@ -101,6 +111,10 @@ class PageConsole {
         this.console.classList.remove(`_page-console-${HASH}-active`);
         break;
     }
+  }
+
+  switchTab(type) {
+
   }
 }
 

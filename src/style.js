@@ -65,14 +65,14 @@ let style = `
   transform: translate(0);
 }
 
-#_page-console-${HASH}-tab ul {
+#_page-console-${HASH}-tabs ul {
   list-style: none;
   font-size: 0;
   border-bottom: 1px solid ${BLACK};
   text-align: right;
 }
 
-#_page-console-${HASH}-tab li {
+#_page-console-${HASH}-tabs li {
   display: inline-block;
   padding: 0 .7rem;
   font-size: .9rem;
@@ -80,7 +80,7 @@ let style = `
   color: ${WHITE};
 }
 
-#_page-console-${HASH}-tab li.active {
+#_page-console-${HASH}-tabs li.active {
   background-color: #4C5E6D;
 }
 
