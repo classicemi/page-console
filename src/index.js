@@ -85,8 +85,10 @@ class PageConsole {
       this.tab.childNodes.forEach(child => {
         child.classList.remove('active');
       });
+
       e.target.classList.add('active');
-      this.switchTab(e.target.tabType);
+      let type = e.target.dataset['tabType'];
+      this.switchTab(type);
     });
     this.tab.firstChild.classList.add('active');
 
@@ -119,7 +121,10 @@ class PageConsole {
   }
 
   switchTab(type) {
-
+    this.tabPanels.childNodes.forEach(child => {
+      child.style.display = 'none';
+    });
+    $(`#_page-console-${HASH}-${type.toLowerCase()}-panel`).style.display = 'block';
   }
 }
 

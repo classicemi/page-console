@@ -91,12 +91,17 @@ let style = `
   background-color: #4C5E6D;
 }
 
+#_page-console-${HASH}-tab-panels > div {
+  display: none;
+}
+
 #_page-console-${HASH}-tab-panels li {
   padding: 0 .5rem;
   border-bottom: 1px solid ${BLACK};
   line-height: 1.6rem;
   color: ${WHITE};
-  font-family: Consolas;
+  font-family: Menlo, Consolas;
+  font-size: .8rem;
 }
 
 .__page-console-wrapper {
