@@ -12,6 +12,7 @@ import { buttonTpl, consoleTpl } from './tpl';
 import HASH from './hash';
 import style from './style';
 import tpl from './tpl';
+import environment from './environment/environment';
 
 /**
  * Alias
@@ -45,6 +46,7 @@ class PageConsole {
   constructor() {
     this.tabs = ['Console', 'Environment', 'Network'];
     this.tpl = tpl;
+    this.environment = environment;
   }
 
   open() {
@@ -95,6 +97,9 @@ class PageConsole {
       tabPanel.id = `_page-console-${HASH}-${tab.toLowerCase()}-panel`;
       this.tabPanels.appendChild(tabPanel);
     });
+
+    // environment
+    $(`#_page-console-${HASH}-environment-panel`).appendChild(environment.container);
 
     console.log(this);
   }

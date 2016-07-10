@@ -10,6 +10,13 @@ let style = `
   font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,SimSun,sans-serif;
 }
 
+#_page-console-${HASH} ul,
+#_page-console-${HASH} li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
 #_page-console-${HASH}-switch {
   display: block;
   line-height: 1;
@@ -82,6 +89,14 @@ let style = `
 
 #_page-console-${HASH}-tabs li.active {
   background-color: #4C5E6D;
+}
+
+#_page-console-${HASH}-tab-panels li {
+  padding: 0 .5rem;
+  border-bottom: 1px solid ${BLACK};
+  line-height: 1.6rem;
+  color: ${WHITE};
+  font-family: Consolas;
 }
 
 .__page-console-wrapper {
