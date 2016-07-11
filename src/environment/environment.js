@@ -48,10 +48,10 @@ class PageConsoleEnvironment {
         navType = 'Unknown Other Way';
         break;
     }
-    this.environmentInfo.push(`[Performance Navigation Type] ${navType}`);
+    this.environmentInfo.push(`[Performance: Navigation Type] ${navType}`);
     let redirectCount = perf.navigation.redirectCount;
     if (redirectCount) {
-      this.environmentInfo.push(`[Performance Redirect Count] ${redirectCount}`);
+      this.environmentInfo.push(`[Performance: Redirect Count] ${redirectCount}`);
     }
 
     this.container = document.createDocumentFragment();

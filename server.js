@@ -37,6 +37,6 @@ http.createServer(function(req, res) {
   fs.readFile(pathname,function (err,data){
     res.end(data);
   });
-}).listen(3000, function() {
-  console.log('Page-Console Test Server Listening on Port 3000.');
+}).listen(8088, function() {
+  console.log('Page-Console Test Server Listening on Port 8088.');
 });

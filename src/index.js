@@ -13,6 +13,8 @@ import HASH from './hash';
 import style from './style';
 import tpl from './tpl';
 import environment from './environment/environment';
+import defaultConsole from './default/default';
+console.log('eee', 'fefe');
 
 /**
  * Alias
@@ -44,7 +46,7 @@ insertStyle(style);
  */
 class PageConsole {
   constructor() {
-    this.tabs = ['Console', 'Environment', 'Network'];
+    this.tabs = ['Console', 'Network', 'Environment'];
     this.tpl = tpl;
     this.environment = environment;
   }
@@ -74,17 +76,18 @@ class PageConsole {
     // tab
     this.tab = $(`#${this.console.id}-tabs ul`);
     let tabItems = document.createDocumentFragment();
-    this.tabs.forEach(tab => {
+    for (let i = 0, len = this.tabs.length; i < len; i++) {
       let li = document.createElement('li');
-      li.innerText = tab;
-      li.dataset.tabType = tab;
+      li.innerText = this.tabs[i];
+      li.dataset.tabType = this.tabs[i];
       tabItems.appendChild(li);
-    });
+    }
     this.tab.appendChild(tabItems);
-    this.tab.addEventListener('click', (e) => {
-      this.tab.childNodes.forEach(child => {
-        child.classList.remove('active');
-      });
+    this.tab.addEventListener('click', e => {
+      // alert(this.tab.childNodes);
+      for (let i = 0, len = this.tab.childNodes.length; i < len; i++) {
+        this.tab.childNodes[i].classList.remove('active');
+      }
 
       e.target.classList.add('active');
       let type = e.target.dataset['tabType'];
@@ -94,11 +97,11 @@ class PageConsole {
 
     // tab panels
     this.tabPanels = $(`#${this.console.id}-tab-panels`);
-    this.tabs.forEach(tab => {
+    for (let i = 0, len = this.tabs.length; i < len; i++) {
       let tabPanel = document.createElement('div');
-      tabPanel.id = `_page-console-${HASH}-${tab.toLowerCase()}-panel`;
+      tabPanel.id = `_page-console-${HASH}-${this.tabs[i].toLowerCase()}-panel`;
       this.tabPanels.appendChild(tabPanel);
-    });
+    }
 
     // environment
     $(`#_page-console-${HASH}-environment-panel`).appendChild(environment.container);
@@ -121,9 +124,9 @@ class PageConsole {
   }
 
   switchTab(type) {
-    this.tabPanels.childNodes.forEach(child => {
-      child.style.display = 'none';
-    });
+    for (let i = 0, len = this.tabPanels.childNodes.length; i < len; i++) {
+      this.tabPanels.childNodes[i].style.display = 'none';
+    }
     $(`#_page-console-${HASH}-${type.toLowerCase()}-panel`).style.display = 'block';
   }
 }
