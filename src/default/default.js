@@ -1,8 +1,10 @@
 import * as watif from '../utils/is';
+import render from '../utils/render';
+import { $ } from '../utils/query';
+import HASH from '../hash';
 
 class PageConsoleDefault {
   constructor() {
-    this.init();
   }
 
   init() {
@@ -49,11 +51,12 @@ class PageConsoleDefault {
   }
 
   print(opt) {
-    let self = this;
+    let panel = $(`#_page-console-${HASH}-console-panel`);
     let output = [];
     let content = Array.prototype.slice.call(opt.content);
 
-    opt.content.forEach((item, idx) => {
+    for (let i = 0, len = opt.content.length; i < len; i++) {
+      let item = opt.content[i];
       try {
         if (watif.isFunction(item)) {
           output.push(item.toString());
@@ -61,17 +64,26 @@ class PageConsoleDefault {
 
         } else if (watif.isObject(item)) {
 
-        } else { // default
+        } else { // default string
           output.push(item);
         }
       } catch (err) {
 
       }
-    });
-
-    if (typeof this.origin[opt.type] === 'function') {
-      this.origin[opt.type].apply(window.console, content);
     }
+
+    // this.origin.log.call(window.console, opt);
+
+    // if (typeof this.origin[opt.type] === 'function') {
+    //   this.origin[opt.type].apply(window.console, content);
+    // }
+
+    let dom = render({
+      type: opt.type,
+      content: output
+    });
+    this.origin.log.call(window.console, dom);
+    panel.appendChild(dom);
   }
 }
 

@@ -12,19 +12,18 @@ $.addClass = function(node, classNames) {
   if (!isArray(classNames)) {
     classNames = [classNames];
   }
-  classNames.forEach(name => {
-    node.className += ` ${name}`;
-  });
+  for (let i = 0, len = classNames.length; i < len; i++) {
+    node.className += ` ${classNames[i]}`;
+  }
 };
 
 $.removeClass = function(node, classNames) {
   if (!isArray(classNames)) {
     classNames = [classNames];
   }
-  classNames.forEach(name => {
-    let nameRegExp = new RegExp(`\s?${name}`);
-    node.className.replace(nameRegExp, '');
-  });
+  for (let i = 0, len = classNames.length; i < len; i++) {
+    node.className.replace(new RegExp(`\s?${classNames[i]}`), '');
+  }
 }
 
 export { $ };

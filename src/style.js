@@ -101,7 +101,7 @@ let style = `
   line-height: 1.6rem;
   color: ${WHITE};
   font-family: Menlo, Consolas;
-  font-size: .8rem;
+  font-size: .75rem;
 }
 
 .__page-console-wrapper {

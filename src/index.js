@@ -14,7 +14,6 @@ import style from './style';
 import tpl from './tpl';
 import environment from './environment/environment';
 import defaultConsole from './default/default';
-console.log('eee', 'fefe');
 
 /**
  * Alias
@@ -84,16 +83,16 @@ class PageConsole {
     }
     this.tab.appendChild(tabItems);
     this.tab.addEventListener('click', e => {
-      // alert(this.tab.childNodes);
-      for (let i = 0, len = this.tab.childNodes.length; i < len; i++) {
-        this.tab.childNodes[i].classList.remove('active');
-      }
-
-      e.target.classList.add('active');
-      let type = e.target.dataset['tabType'];
+      // // alert(this.tab.childNodes);
+      // for (let i = 0, len = this.tab.childNodes.length; i < len; i++) {
+      //   this.tab.childNodes[i].classList.remove('active');
+      // }
+      //
+      // e.target.classList.add('active');
+      // let type = e.target.dataset['tabType'];
       this.switchTab(type);
     });
-    this.tab.firstChild.classList.add('active');
+    // this.tab.firstChild.classList.add('active');
 
     // tab panels
     this.tabPanels = $(`#${this.console.id}-tab-panels`);
@@ -103,10 +102,13 @@ class PageConsole {
       this.tabPanels.appendChild(tabPanel);
     }
 
+    // console
+    defaultConsole.init();
+
     // environment
     $(`#_page-console-${HASH}-environment-panel`).appendChild(environment.container);
 
-    console.log(this);
+    // console.log(this);
   }
 
   switchStatus(status) {
