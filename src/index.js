@@ -9,6 +9,7 @@
  * Imports
  */
 import { buttonTpl, consoleTpl } from './tpl';
+import { $ } from './utils/query';
 import HASH from './hash';
 import style from './style';
 import tpl from './tpl';
@@ -18,13 +19,6 @@ import defaultConsole from './default/default';
 /**
  * Alias
  */
-let $ = function(selector) {
-  let match = document.querySelectorAll(selector);
-  if (match.length === 1) {
-    return match[0];
-  }
-  return match;
-};
 let _originalConsole = window.console;
 let bodyElement = document.getElementsByTagName('body')[0];
 
