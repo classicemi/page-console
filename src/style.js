@@ -1,5 +1,14 @@
 import HASH from './hash';
 
+const DEFAULT_FONT_COLOR = 'rgb(204, 204, 204)';
+const MAIN_BG = 'rgb(36, 36, 36)';
+const MAIN_BG_ACTIVE = 'rgb(54, 54, 54)';
+const TABS_BG = 'rgb(42, 42, 42)';
+const TABS_BORDER = 'rgb(61, 61, 61)';
+const TAB_BORDER_ACTIVE = 'rgb(193, 125, 8)';
+const CONSOLE_DEFAULT_FONT_COLOR = 'rgb(187, 195, 204)';
+const CONSOLE_ITEM_BORDER = 'rgb(43, 43, 43)';
+
 const BLUE = '#66B3DE';
 const MAIN = '#384551';
 const BLACK = '#323C45';
@@ -8,6 +17,13 @@ const WHITE = '#FFF';
 let style = `
 #_page-console-${HASH} {
   font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,SimSun,sans-serif;
+}
+
+#_page-console-${HASH} ul,
+#_page-console-${HASH} li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 #_page-console-${HASH}-switch {
@@ -19,9 +35,9 @@ let style = `
   bottom: 10px;
   right: 10px;
   font-size: 1rem;
-  color: ${WHITE};
-  background-color: ${MAIN};
-  border: 1px solid ${MAIN};
+  color: ${DEFAULT_FONT_COLOR};
+  background-color: ${MAIN_BG};
+  border: 1px solid ${MAIN_BG};
   border-radius: 3rem;
   white-space: nowrap;
   vertical-align: middle;
@@ -30,8 +46,8 @@ let style = `
 }
 
 #_page-console-${HASH}-switch:active {
-  background-color: ${BLACK};
-  border-color: ${BLACK};
+  background-color: ${MAIN_BG_ACTIVE};
+  border-color: ${MAIN_BG_ACTIVE};
 }
 
 #_page-console-${HASH}-mask {
@@ -56,80 +72,60 @@ let style = `
   right: 0;
   bottom: 0;
   min-height: 70%;
-  background-color: ${MAIN};
   z-index: 10001;
   transform: translateY(100%);
   transition: all 0.3s;
+  background-color: ${MAIN_BG};
 }
 ._page-console-${HASH}-active #_page-console-${HASH}-panel {
   transform: translate(0);
 }
 
-#_page-console-${HASH}-tab ul {
+#_page-console-${HASH}-tabs {
+  background-color: ${TABS_BG};
+  border-bottom: 1px solid ${TABS_BORDER};
+}
+
+#_page-console-${HASH}-tabs ul {
+  margin-bottom: -1px;
   list-style: none;
   font-size: 0;
-  border-bottom: 1px solid ${BLACK};
   text-align: right;
 }
 
-#_page-console-${HASH}-tab li {
+#_page-console-${HASH}-tabs li {
   display: inline-block;
   padding: 0 .7rem;
   font-size: .9rem;
-  line-height: 2rem;
-  color: ${WHITE};
-  letter-spacing: 1px;
+  line-height: 1.8rem;
+  color: ${DEFAULT_FONT_COLOR};
 }
 
-#_page-console-${HASH}-tab li.active {
-  background-color: #4C5E6D;
+#_page-console-${HASH}-tabs li.active {
+  border-bottom: 2px solid ${TAB_BORDER_ACTIVE};
 }
 
-.__page-console-wrapper {
-  position: absolute;
-  top: 5px;
-  bottom: 5px;
-  right: 5px;
-  width: 280px;
-  padding: 26px 10px 10px;
-  background: rgba(228, 223, 184, 1);
-  border-radius: 6px;
-  box-shadow: 0 0 6px #ccc;
-  z-index: 999999;
+#_page-console-${HASH}-tab-panels > div {
+  display: none;
 }
 
-.__page-console-wrapper p,
-.__page-console-wrapper ul {
-  margin: 0;
-  padding: 0;
+#_page-console-${HASH}-tab-panels li {
+  padding: .25rem .5rem;
+  border-bottom: 1px solid ${CONSOLE_ITEM_BORDER};
+  line-height: 1.3;
+  color: ${CONSOLE_DEFAULT_FONT_COLOR};
+  font-family: Menlo, Consolas;
+  font-size: .7rem;
 }
 
-.__page-console-wrapper li {
-  margin-bottom: 5px;
-  padding: 5px;
-  width: 100%;
-  list-style: none;
-  box-sizing: border-box;
-  border: 1px solid rgba(185, 181, 151, 0);
-  transition: all .3s;
-  font-family: Menlo, Consolas, "Courier New", Courier, FreeMono, monospace;
-  font-size: 12px;
-  color: #444;
-}
-.__page-console-wrapper li:hover {
-  border-radius: 6px;
-  border: 1px solid rgba(185, 181, 151, .4);
-  background-color: rgba(185, 181, 151, .4);
-}
-
-.__page-console-close {
-  position: absolute;
-  right: 5px;
-  top: 5px;
-}
-.__page-console-close:after {
-  content: 'x';
-  font-family: Consolas, "Courier New", Courier, FreeMono, monospace;
+._page-console-${HASH}-item {
+  color: ${CONSOLE_DEFAULT_FONT_COLOR};
+  padding: .25rem .5rem;
+  border-bottom: 1px solid ${CONSOLE_ITEM_BORDER};
+  font-family: Menlo, Consolas;
+  font-size: .7rem;
+  line-height: 1.3;
+  word-break: break-word;
 }
 `;
 
