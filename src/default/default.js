@@ -63,7 +63,7 @@ class PageConsoleDefault {
         } else if (watif.isArray(item)) {
           output.push(this.formatArray(item));
         } else if (watif.isObject(item)) {
-
+          output.push(this.formatObject(item));
         } else { // default string
           output.push(item);
         }
@@ -87,6 +87,10 @@ class PageConsoleDefault {
 
   formatArray(arr) {
     return `[${arr.toString()}]`;
+  }
+
+  formatObject(obj) {
+    let objStr = JSON.stringify(obj);
   }
 }
 
