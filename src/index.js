@@ -44,7 +44,7 @@ class PageConsole {
     this.environment = environment;
   }
 
-  open() {
+  init() {
     // console container
     this.console = document.createElement('div');
     this.console.id = `_page-console-${HASH}`;
@@ -128,4 +128,6 @@ class PageConsole {
   }
 }
 
-export default new PageConsole();
+let pageConsole = new PageConsole();
+
+module.exports = pageConsole;
