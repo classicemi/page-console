@@ -30,7 +30,6 @@ class PageConsoleEnvironment {
     let perf = global.performance
             || global.webkitPerformance
             || global.msPerformance;
-    console.log(perf);
 
     let navType = '';
     switch (perf.navigation.type) {

@@ -61,7 +61,7 @@ class PageConsoleDefault {
         if (watif.isFunction(item)) {
           output.push(item.toString());
         } else if (watif.isArray(item)) {
-
+          output.push(this.formatArray(item));
         } else if (watif.isObject(item)) {
 
         } else { // default string
@@ -78,12 +78,15 @@ class PageConsoleDefault {
       type: opt.type,
       content: output
     });
-    this.origin.log.call(window.console, dom);
     panel.appendChild(dom);
 
     if (typeof this.origin[opt.type] === 'function') {
       this.origin[opt.type].apply(window.console, content);
     }
+  }
+
+  formatArray(arr) {
+    return `[${arr.toString()}]`;
   }
 }
 

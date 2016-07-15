@@ -39,7 +39,7 @@ insertStyle(style);
  */
 class PageConsole {
   constructor() {
-    this.tabs = ['Console', 'Network', 'Environment'];
+    this.tabs = ['Console', 'Environment'];
     this.tpl = tpl;
     this.environment = environment;
   }
