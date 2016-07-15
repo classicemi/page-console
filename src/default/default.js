@@ -74,16 +74,16 @@ class PageConsoleDefault {
 
     // this.origin.log.call(window.console, opt);
 
-    // if (typeof this.origin[opt.type] === 'function') {
-    //   this.origin[opt.type].apply(window.console, content);
-    // }
-
     let dom = render({
       type: opt.type,
       content: output
     });
     this.origin.log.call(window.console, dom);
     panel.appendChild(dom);
+
+    if (typeof this.origin[opt.type] === 'function') {
+      this.origin[opt.type].apply(window.console, content);
+    }
   }
 }
 

@@ -72,7 +72,7 @@ class PageConsole {
     for (let i = 0, len = this.tabs.length; i < len; i++) {
       let li = document.createElement('li');
       li.innerText = this.tabs[i];
-      li.dataset.tabType = this.tabs[i];
+      li.dataset.tabType = this.tabs[i].toLowerCase();
       tabItems.appendChild(li);
     }
     this.tab.appendChild(tabItems);
@@ -83,10 +83,9 @@ class PageConsole {
       // }
       //
       // e.target.classList.add('active');
-      // let type = e.target.dataset['tabType'];
+      let type = e.target.dataset['tabType'];
       this.switchTab(type);
     });
-    // this.tab.firstChild.classList.add('active');
 
     // tab panels
     this.tabPanels = $(`#${this.console.id}-tab-panels`);
@@ -103,6 +102,7 @@ class PageConsole {
     $(`#_page-console-${HASH}-environment-panel`).appendChild(environment.container);
 
     // console.log(this);
+    this.switchTab(this.tabs[0]);
   }
 
   switchStatus(status) {
@@ -120,7 +120,8 @@ class PageConsole {
   }
 
   switchTab(type) {
-    for (let i = 0, len = this.tabPanels.childNodes.length; i < len; i++) {
+    for (let i = 0, len = this.tab.childNodes.length; i < len; i++) {
+      this.tab.childNodes[i].classList[this.tab.childNodes[i].dataset['tabType'] === type.toLowerCase() ? 'add' : 'remove']('active');
       this.tabPanels.childNodes[i].style.display = 'none';
     }
     $(`#_page-console-${HASH}-${type.toLowerCase()}-panel`).style.display = 'block';
