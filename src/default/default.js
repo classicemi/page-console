@@ -61,9 +61,9 @@ class PageConsoleDefault {
         if (watif.isFunction(item)) {
           output.push(item.toString());
         } else if (watif.isArray(item)) {
-          output.push(this.formatArray(item));
+          output.push(this.format('array', item));
         } else if (watif.isObject(item)) {
-          output.push(this.formatObject(item));
+          output.push(this.format('object', item));
         } else { // default string
           output.push(item);
         }
@@ -85,8 +85,16 @@ class PageConsoleDefault {
     }
   }
 
-  formatArray(arr) {
-    return `[${arr.toString()}]`;
+  format(type, item) {
+    switch (type) {
+      case 'array':
+        return `[${item.toString()}]`;
+        break;
+      case 'object':
+        let json = JSON.stringify(item);
+        return json;
+        break;
+    }
   }
 
   formatObject(obj) {
