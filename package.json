@@ -8,7 +8,7 @@
     "test": "node server.js"
   },
   "author": "classicemi",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.9.1",
     "babel-loader": "^6.2.4",
