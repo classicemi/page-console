@@ -3,3 +3,4 @@ node_modules
 npm-debug.log
 server.js
 Console.js
+.DS_Store
