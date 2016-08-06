@@ -22,7 +22,7 @@ $.removeClass = function(node, classNames) {
     classNames = [classNames];
   }
   for (let i = 0, len = classNames.length; i < len; i++) {
-    node.className.replace(new RegExp(`\s?${classNames[i]}`), '');
+    node.className = node.className.replace(new RegExp(`\s?${classNames[i]}`), '');
   }
 }
 

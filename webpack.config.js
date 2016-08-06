@@ -13,8 +13,9 @@ module.exports = {
   },
   module: {
     loaders: [
-      { test: /.js$/, loader: 'babel' },
-      { test: /.html$/, loader: 'html' }
+      { test: /\.scss$/, loaders: ['style', 'css', 'sass'] },
+      { test: /\.js$/, loader: 'babel' },
+      { test: /\.html$/, loader: 'html' },
     ]
   },
   babel: {

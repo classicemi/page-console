@@ -1,0 +1,58 @@
+@import './vars';
+
+#__page-console-switch {
+  display: block;
+  position: fixed;
+  right: 15px;
+  bottom: 15px;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  color: $default_text_color;
+  background-color: $default_main_bg;
+  font-size: 14px;
+  line-height: 40px;
+  text-align: center;
+  z-index: 10000;
+}
+
+#__page-console {
+  &.active {
+    #__page-console-mask {
+      opacity: 0.5;
+      z-index: 10001;
+    }
+    #__page-console-panel {
+      transform: translate(0);
+    }
+  }
+}
+
+#__page-console-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgb(0, 0, 0);
+  opacity: 0;
+  z-index: -10;
+  transition: opacity 0.3s;
+}
+
+#__page-console-panel {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  min-height: 70%;
+  z-index: 10002;
+  transform: translateY(100%);
+  transition: all 0.3s;
+  background-color: $default_main_bg;
+}
+
+#__page-console-tabs {
+  height: 1.8rem;
+  border-bottom: 1px solid $default_split_line;
+}
